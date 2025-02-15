@@ -4,10 +4,12 @@
 ## Introduction
 This project aims to classify input statements as either truthful or deceptive based on the words presented. Using a dataset from Kaggle [Truth Detection/Deception Detection/Lie Detection.*Dataset* (2022, January 12). Kaggle.] (https://www.kaggle.com/datasets/thesergiu/truth-detectiondeception-detectionlie-detection) that contains labeled political statements (for now, we might change the data set as we later on), we develop a probabilistic agent to determine the likelihood of a statement being a lie. The agent calculates conditional probabilities for words given the truthfulness of statements and applies Bayes' Theorem to determine *P(L|W*)*, the probability of a statement being a lie given its words. Statements with all words unseen from training are flagged as unknown, and returned a failure statement requesting for another input.
 
-**P**erformance measure: what words are in the input statement and what words are in the training data
-**E**nvironment: Only able to see the input statement and the training data.
-**A**ctuators: the input cell and output cell.
-**S**ensors: the input cell.
+---
+
+* **P**erformance measure: what words are in the input statement and what words are in the training data
+* **E**nvironment: Only able to see the input statement and the training data.
+* **A**ctuators: the input cell and output cell.
+* **S**ensors: the input cell.
 
 
 ## Method
