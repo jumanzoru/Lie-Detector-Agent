@@ -42,4 +42,4 @@ For future improvements, the agent will have an additional feature that checks w
 * Guan Huang-Chen
 * Xueheng Zhou
 * Jefferson Umanzor-Urrutia
-* TheSergiu (dataset owner)
+* [TheSergiu (dataset owner)](https://www.kaggle.com/thesergiu)
