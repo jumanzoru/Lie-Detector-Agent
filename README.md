@@ -41,7 +41,7 @@ For future improvements, the agent will have an additional feature that checks w
 
 
 # WARNING!
-To run the agent, you will need to download the LieDetector.ipynb file and the politifact_clean_binarized.csv file in the SAME directory. Use google collab or VScode to open LieDetector.ipynb and run the cells. Don't use jupyter notebook because for some reason jupyter notebook takes ages to load the csv file. If you are using google collab, you will need to drag the csv file to the "file" location in google collab and overwrite the file location when reading it.
+**To run the agent, you will need to download the LieDetector.ipynb file and the politifact_clean_binarized.csv file in the SAME directory. Use google collab or VScode to open LieDetector.ipynb and run the cells. Don't use jupyter notebook because for some reason jupyter notebook takes ages to load the csv file. If you are using google collab, you will need to drag the csv file to the "file" location in google collab and overwrite the file location when reading it.**
 
 
 ## Contributors
