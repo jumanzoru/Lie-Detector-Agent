@@ -35,7 +35,7 @@ Calculate *P_L_given_W** with the above information
 If *P_L_given_W\** less than 0.5, return “Truth”. Else return “Lie!”
 
 
-## Future Features
+## Future Feature Expansions
 For future improvements, the agent will have an additional feature that checks with the user whether the current guess is correct or not. If the user replies no, then the agent will adjust the probabilities by lowering or raising the probabilities of the valid words from the input. That is, change *P(Wi|L)* for all valid words *Wi*. If yes, then the agent will do nothing because this means that the current probabilities are good.
 
 
