@@ -20,15 +20,13 @@ Also, suppose that *𝑃(Wi=1)* = # of statements that contained *Wi* / # of tot
 Let *𝑊** be the input statement, and let *𝑊i* be the word of the input statement at location *i*.
 For example, if the words *𝑊2* and *𝑊4* are given, then *W\**={*𝑊2*=1,*𝑊4*=1}.
 
-Objective: given *𝑊\**, determine whether the statement is more likely to be a lie or the truth, that is: find *P(L|W*)* and compare against threshold 0.5
-For each word within the input statement *𝑊**, check *P(Wi)*. If any *Wi* has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. 
+## Objective
+Given *𝑊\**, determine whether the statement is more likely to be a lie or the truth, that is: find *P(L|W*)* and compare against threshold 0.5
+For each word within the input statement *𝑊\**, check *P(Wi)*. If any *Wi* has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. 
 If all *Wi* are never trained on, then return an exception statement “Huh, I don’t know about that. Maybe try something more political?”
 Calculate *P(Wi|L)* for all words within *W**, 
 Calculate *P(L)*
 Calculate *P(W\*|L)*
 Calculate *P(W\*|notL)*
 Calculate *P_L_given_W** with the above information
-If P_L_given_W* less than 0.5, return “Truth”. Else return “Lie!”
-Then ask the user if this is the correct guess. If the user agrees that the agent is correct, then do nothing and continue to the next question.
-If user replies "no", then adjust the probabilities by lowering or raising the probabilities of the valid words from the input. That is, change Calculate P(Wi|L) for all valid words Wi.
-
+If *P_L_given_W\** less than 0.5, return “Truth”. Else return “Lie!”
