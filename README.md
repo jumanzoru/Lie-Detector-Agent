@@ -10,7 +10,7 @@ This project aims to classify input statements as either truthful or deceptive b
 * **E**nvironment: Only able to see the input statement and the training data.
 * **A**ctuators: the input cell and output cell.
 * **S**ensors: the input cell.
-This is a goal based model, with the only goal to find the probability of lie, and return a output based on that value.
+This is a goal based model, with the only goal to find the probability of lie, and return a output based on that value. This is a memory based model. It needs to look at the training data everytime it makes a decision.
 
 
 ## Method
@@ -38,6 +38,10 @@ If *P_L_given_W\** less than 0.5, return “Truth”. Else return “Lie!”
 
 ## Future Feature Expansions
 For future improvements, the agent will have an additional feature that checks with the user whether the current guess is correct or not. If the user replies no, then the agent will adjust the probabilities by lowering or raising the probabilities of the valid words from the input. That is, change *P(Wi|L)* for all valid words *Wi*. If yes, then the agent will do nothing because this means that the current probabilities are good.
+
+
+# WARNING!
+To run the agent, you will need to download the LieDetector.ipynb file and the politifact_clean_binarized.csv file in the SAME directory. Use google collab or VScode to open LieDetector.ipynb and run the cells. Don't use jupyter notebook because for some reason jupyter notebook takes ages to load the csv file. If you are using google collab, you will need to drag the csv file to the "file" location in google collab and overwrite the file location when reading it.
 
 
 ## Contributors
