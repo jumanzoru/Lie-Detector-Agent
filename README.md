@@ -10,6 +10,7 @@ This project aims to classify input statements as either truthful or deceptive b
 * **E**nvironment: Only able to see the input statement and the training data.
 * **A**ctuators: the input cell and output cell.
 * **S**ensors: the input cell.
+This is a goal based model, with the only goal to find the probability of lie, and return a output based on that value.
 
 
 ## Method
