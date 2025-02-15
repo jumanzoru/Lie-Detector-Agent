@@ -38,8 +38,8 @@ For future improvements, the agent will have an additional feature that checks w
 
 
 ## Contributors
-Tom Tang
-Guan Huang-Chen
-Xueheng Zhou
-Jefferson Umanzor-Urrutia
-TheSergiu (dataset owner)
+* Tom Tang
+* Guan Huang-Chen
+* Xueheng Zhou
+* Jefferson Umanzor-Urrutia
+* TheSergiu (dataset owner)
