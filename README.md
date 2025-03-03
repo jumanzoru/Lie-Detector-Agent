@@ -13,6 +13,32 @@ This project aims to classify input statements as either truthful or deceptive b
 This is a goal based model, with the only goal to find the probability of lie, and return a output based on that value. This is a memory based model. It needs to look at the training data everytime it makes a decision.
 
 
+##  Data Exploration and Preprocessing Step
+
+### We are using the dataset politifact_clean_binarized.csv
+
+---
+
+There are 11188 number of observations in this training set. We are going to assume words appear at most once every observation. There are exceptions but due to the set being so large, this error can be neglected. The fist 11087 observations are going to be the training data of this project and the last 100 be the validation set.
+The truthfulness of each data, as the owner of this data set states, are evaluated by the Politifact.com team, hence it is realiable.
+
+---
+
+There are 4 columns in politifact.csv: statement, source, link, veracity.
+
+* statement - statement made by celebrity or politician.
+* source - can be a person, but not necessarily.
+* link - URL of affirmation.
+* veracity - degree of truthfulness given by the Politifact.com team.
+
+There are 6305 lies and 4783 truth in total in the training set, which is the first 11087 data in this dataset.
+
+For this dataset specifically,veracity is binarized (into just truths and lies), with 1 being truth and 0 being lie.
+For this project, only the first colum and fourth column are needed.
+* Parse the training data and extract only the first and fourth columns. The first will be the sentence query and the fourth will be wether is a lie or not.
+* **Note:** for this current version, the model does not split the punctuation from the words, for example: "here!" is parsed into one word instead of two. Since we are doing the same for the user inputs, it should be fine.
+
+
 ## Method
 ![Image](diagram_hand.jpg)
 #### This project uses **Bayes Network** to calculate P(Lie|Query)
@@ -27,8 +53,6 @@ This is a goal based model, with the only goal to find the probability of lie, a
 
 
 ## Objective
-#### Parsing data:
-Parse the training data and extract only the first and fourth columns. The first will be the sentence query and the fourth will be wether is a lie or not. **Note:** for this current version, the model does not split the punctuation from the words, for example: "here!" is parsed into one word instead of two. Since we are doing the same for the user inputs, it should be fine.
 #### Handling unknown words:
 For each word within the input statement 𝑊*, check 𝑃(𝑊i). If any 𝑊i has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. If all words are invalid, the model returns -1 (unknown). The motivation is that it simplifies the problem by ignoring words that the model hasn’t learned to associate with lies/truths. There are other ways of handling nknown words that may improve the model. These are mentioned in the **Future Feature Expansions** section.
 * If all 𝑊i are never trained on, then return an exception statement “Huh, I don’t know about that. Maybe try something more political?”
@@ -122,30 +146,6 @@ P(Lie | Query) = 0.3 * 0.447 / (0.3* 0.447 + 0.105 * 0.553) = 0.698
 
 ## Future Feature Expansions
 For future improvements, the agent will have an additional feature that checks with the user whether the current guess is correct or not. If the user replies no, then the agent will adjust the probabilities by lowering or raising the probabilities of the valid words from the input. That is, change 𝑃(𝑊i|L) for all valid words 𝑊i. If yes, then the agent will do nothing because this means that the current probabilities are good.
-
-##  data exploration and preprocessing step
-
-### We are using the dataset politifact_clean_binarized.csv
-
----
-
-There are 11188 number of observations in this training set. We are going to assume words appear at most once every observation. There are exceptions but due to the set being so large, this error can be neglected. The fist 11087 observations are going to be the training data of this project and the last 100 be the validation set.
-The truthfulness of each data, as the owner of this data set states, are evaluated by the Politifact.com team, hence it is realiable.
-
----
-
-There are 4 columns in politifact.csv: statement, source, link, veracity.
-
-* statement - statement made by celebrity or politician.
-* source - can be a person, but not necessarily.
-* link - URL of affirmation.
-* veracity - degree of truthfulness given by the Politifact.com team.
-
-There are 6305 lies and 4783 truth in total in the training set, which is the first 11087 data in this dataset.
-
-For this dataset specifically,veracity is binarized (into just truths and lies), with 1 being truth and 0 being lie.
-For this project, only the first colum and fourth column are needed.
-
 
 
 ## Conclusion
