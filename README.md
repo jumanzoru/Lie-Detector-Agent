@@ -28,7 +28,8 @@ This is a goal based model, with the only goal to find the probability of lie, a
 
 ## Objective
 Given 𝑊*, determine whether the statement is more likely to be a lie or the truth, that is: find 𝑃(L|𝑊*) and compare against threshold 0.5.
-* For each word within the input statement 𝑊*, check 𝑃(𝑊i). If any 𝑊i has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. 
+#### Handling unknown words:
+For each word within the input statement 𝑊*, check 𝑃(𝑊i). If any 𝑊i has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. This is 
 * If all 𝑊i are never trained on, then return an exception statement “Huh, I don’t know about that. Maybe try something more political?”
 * Calculate 𝑃(𝑊i|L) for all words within 𝑊*, 
 * Calculate 𝑃(L)
@@ -36,6 +37,44 @@ Given 𝑊*, determine whether the statement is more likely to be a lie or the t
 * Calculate 𝑃(𝑊*|notL)
 * Calculate 𝑃(L|𝑊*) with the above information
 * If 𝑃(L|𝑊*) less than 0.5, return “Truth”. Else return “Lie!”
+
+## Step-by-Step Math Calculation
+
+#### 1. Priors: \( P( Lie ) \) and \( P( Not Lie ) \)
+
+- Calculate class probabilities from training data:
+
+  P(Lie) = Number of lies/Total statements
+  
+  P(Not Lie) = 1 - P(Lie)
+
+#### 2. Likelihoods: \( P( W<sub>i</sub> | Lie ) \) and \( P( W<sub>i</sub> | Not Lie ) \)
+
+For each word \( W<sub>i</sub> \) in the input query:
+
+- **Lie Class**:
+
+  P( W<sub>i</sub> | Lie ) = Count of lies containing W<sub>i</sub> / Total lies
+
+- **Not Lie Class**:
+
+  P( W<sub>i</sub> | Not Lie ) = Count of truths containing W<sub>i</sub> / Total truths
+
+
+#### 3. Joint Probability of Query Given Class
+
+- Assume independence between words:
+
+  P( Query | Lie ) = Product of all W<sub>i</sub> over P( W<sub>i</sub> | Lie )
+
+  P( Query | Not Lie ) = Product of all W<sub>i</sub> over P( W<sub>i</sub> | Not Lie )
+
+
+#### 4. Posterior Probability (Bayes’ Theorem)
+
+P ( Query ) =  P( Query | Lie ) * P( Lie ) + P( Query | Not Lie ) * P( Not Lie )
+
+P(Lie|Query) = P( Query | Lie ) * P( Lie ) / P ( Query )
 
 
 ## Future Feature Expansions
