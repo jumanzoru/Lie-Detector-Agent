@@ -15,9 +15,9 @@ This is a goal based model, with the only goal to find the probability of lie, a
 
 ## Method
 #### This project uses the Bayes network to calculate P(Lie|Quey)
-The variable *L∈*{0,1} denotes whether a statement is a lie or not. True and mostly true are projected to *L*=1, while all others (Half-True, Mostly False, False, Pants on Fire!) are all projected as *L*=0.
-The variable *𝑊𝑖∈*{0,1} represents the presence of a specific word in the statement.
-For this model, the conditional probability for a word *𝑊𝑖* given *L*=*l* is defined as:
+* The variable *L∈*{0,1} denotes whether a statement is a lie or not. True and mostly true are projected to *L*=1, while all others (Half-True, Mostly False, False, Pants on Fire!) are all projected as *L*=0.
+* The variable *𝑊𝑖∈*{0,1} represents the presence of a specific word in the statement.
+* For this model, the conditional probability for a word *𝑊𝑖* given *L*=*l* is defined as:
 *𝑃(𝑊𝑖=1∣L=l)* = # of statements of type containing word *𝑊𝑖* / # of statements of type *l*
 Also, suppose that *𝑃(L=1)* = # of lie statements / # of total statements
 Also, suppose that *𝑃(Wi=1)* = # of statements that contained *Wi* / # of total statements
