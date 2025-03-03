@@ -26,15 +26,15 @@ This is a goal based model, with the only goal to find the probability of lie, a
 
 
 ## Objective
-Given 𝑊*, determine whether the statement is more likely to be a lie or the truth, that is: find 𝑃(L|𝑊*) and compare against threshold 0.5
-For each word within the input statement 𝑊*, check 𝑃(𝑊i). If any 𝑊i has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. 
-If all 𝑊i are never trained on, then return an exception statement “Huh, I don’t know about that. Maybe try something more political?”
-Calculate 𝑃(𝑊i|L) for all words within 𝑊*, 
-Calculate 𝑃(L)
-Calculate 𝑃(𝑊*|L)
-Calculate 𝑃(𝑊*|notL)
-Calculate 𝑃(L|𝑊*) with the above information
-If 𝑃(L|𝑊*) less than 0.5, return “Truth”. Else return “Lie!”
+Given 𝑊*, determine whether the statement is more likely to be a lie or the truth, that is: find 𝑃(L|𝑊*) and compare against threshold 0.5.
+* For each word within the input statement 𝑊*, check 𝑃(𝑊i). If any 𝑊i has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. 
+* If all 𝑊i are never trained on, then return an exception statement “Huh, I don’t know about that. Maybe try something more political?”
+* Calculate 𝑃(𝑊i|L) for all words within 𝑊*, 
+* Calculate 𝑃(L)
+* Calculate 𝑃(𝑊*|L)
+* Calculate 𝑃(𝑊*|notL)
+* Calculate 𝑃(L|𝑊*) with the above information
+* If 𝑃(L|𝑊*) less than 0.5, return “Truth”. Else return “Lie!”
 
 
 ## Future Feature Expansions
