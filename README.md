@@ -65,11 +65,11 @@ For this project, only the first colum and fourth column are needed.
 
 
 ## Conclusion
-Conclusion is in Conclusion.md file.
+The logistic of the main calculate probability function has been tested multiple times, both on small self created data and on the final dataset we are currently using, and also testing using the validation set. The outcome of this function is expected. The outputs from using real data, however, is very interesting. For example, "Donald Trump is the president" is a "Lie", but "Donald Trump is the president of the United States" is "Truth". The accuracy of this agent from testing with the validation set is 58.43%, which is better than baseline but not very high. But it is considered to be hard to identify lies in poltical statements even for a human, political statements are usually always debateble and have some parts of it being correct and other parts being either fake or exaggerated. In addition, political sentences usually requires some background information, such as who is the speaker or when is this sentence being presented, to be able to be identified as a lie or not. Yet there are further improvements that can be made to increase the accuracy. One way of doing it is to update the training data as the user enters more inputs, as stated in the Abstract of this project. Another way is to consider the conditional probability of the valid words in the user input, given whether the statements they are in together are lies or not.
 
 
-# WARNING!
-**To run the agent, you will need to download the LieDetector.ipynb file and the politifact_clean_binarized.csv file in the SAME directory. If you are using google collab, you will need to drag the csv file to the "file" location in google collab and overwrite the file location when reading it.**
+# Instructions
+**To run the agent, download the LieDetector.ipynb file and the politifact_clean_binarized.csv file in the SAME directory. If you are using google collab, you will need to drag the csv file to the "file" location in google collab and overwrite the file location when reading it.**
 
 
 ## Contributors
