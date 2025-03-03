@@ -15,30 +15,30 @@ This is a goal based model, with the only goal to find the probability of lie, a
 
 ## Method
 #### This project uses the Bayes network to calculate P(Lie|Quey)
-* The variable *L∈*{0,1} denotes whether a statement is a lie or not. True and mostly true are projected to *L*=1, while all others (Half-True, Mostly False, False, Pants on Fire!) are all projected as *L*=0.
-* The variable *𝑊𝑖∈*{0,1} represents the presence of a specific word in the statement.
-* For this model, the conditional probability for a word *𝑊𝑖* given *L*=*l* is defined as:
-*𝑃(𝑊𝑖=1∣L=l)* = # of statements of type containing word *𝑊𝑖* / # of statements of type *l*
-Also, suppose that *𝑃(L=1)* = # of lie statements / # of total statements
-Also, suppose that *𝑃(Wi=1)* = # of statements that contained *Wi* / # of total statements
-Let *𝑊** be the input statement, and let *𝑊i* be the word of the input statement at location *i*.
-For example, if the words *𝑊2* and *𝑊4* are given, then *W\**={*𝑊2*=1,*𝑊4*=1}.
+* The variable L∈{0,1} denotes whether a statement is a lie or not. True and mostly true are projected to L=1, while all others (Half-True, Mostly False, False, Pants on Fire!) are all projected as L=0.
+* The variable 𝑊𝑖∈{0,1} represents the presence of a specific word in the statement.
+* For this model, the conditional probability for a word 𝑊𝑖 given L=*l* is defined as:
+𝑃(𝑊𝑖=1∣L=l) = # of statements of type containing word 𝑊𝑖 / # of statements of type *l*
+Also, suppose that 𝑃(L=1) = # of lie statements / # of total statements
+Also, suppose that 𝑃(𝑊i=1) = # of statements that contained 𝑊i / # of total statements
+Let 𝑊* be the input statement, and let 𝑊i be the word of the input statement at location *i*.
+For example, if the words 𝑊2 and 𝑊4 are given, then 𝑊*={𝑊2=1,𝑊4=1}.
 
 
 ## Objective
-Given *𝑊\**, determine whether the statement is more likely to be a lie or the truth, that is: find *P(L|W*)* and compare against threshold 0.5
-For each word within the input statement *𝑊\**, check *P(Wi)*. If any *Wi* has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. 
-If all *Wi* are never trained on, then return an exception statement “Huh, I don’t know about that. Maybe try something more political?”
-Calculate *P(Wi|L)* for all words within *W**, 
-Calculate *P(L)*
-Calculate *P(W\*|L)*
-Calculate *P(W\*|notL)*
-Calculate *P_L_given_W** with the above information
-If *P_L_given_W\** less than 0.5, return “Truth”. Else return “Lie!”
+Given 𝑊*, determine whether the statement is more likely to be a lie or the truth, that is: find 𝑃(L|𝑊*) and compare against threshold 0.5
+For each word within the input statement 𝑊*, check 𝑃(𝑊i). If any 𝑊i has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. 
+If all 𝑊i are never trained on, then return an exception statement “Huh, I don’t know about that. Maybe try something more political?”
+Calculate 𝑃(𝑊i|L) for all words within 𝑊*, 
+Calculate 𝑃(L)
+Calculate 𝑃(𝑊*|L)
+Calculate 𝑃(𝑊*|notL)
+Calculate 𝑃(L|𝑊*) with the above information
+If 𝑃(L|𝑊*) less than 0.5, return “Truth”. Else return “Lie!”
 
 
 ## Future Feature Expansions
-For future improvements, the agent will have an additional feature that checks with the user whether the current guess is correct or not. If the user replies no, then the agent will adjust the probabilities by lowering or raising the probabilities of the valid words from the input. That is, change *P(Wi|L)* for all valid words *Wi*. If yes, then the agent will do nothing because this means that the current probabilities are good.
+For future improvements, the agent will have an additional feature that checks with the user whether the current guess is correct or not. If the user replies no, then the agent will adjust the probabilities by lowering or raising the probabilities of the valid words from the input. That is, change 𝑃(𝑊i|L) for all valid words 𝑊i. If yes, then the agent will do nothing because this means that the current probabilities are good.
 
 ##  data exploration and preprocessing step
 
