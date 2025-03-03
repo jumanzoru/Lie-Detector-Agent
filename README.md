@@ -27,10 +27,12 @@ This is a goal based model, with the only goal to find the probability of lie, a
 
 
 ## Objective
-Given 𝑊*, determine whether the statement is more likely to be a lie or the truth, that is: find 𝑃(L|𝑊*) and compare against threshold 0.5.
+#### Parsing data:
+Parse the training data and extract only the first and fourth columns. The first will be the sentence query and the fourth will be wether is a lie or not. **Note:** for this current version, the model does not split the punctuation from the words, for example: "here!" is parsed into one word instead of two. Since we are doing the same for the user inputs, it should be fine.
 #### Handling unknown words:
-For each word within the input statement 𝑊*, check 𝑃(𝑊i). If any 𝑊i has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. This is 
+For each word within the input statement 𝑊*, check 𝑃(𝑊i). If any 𝑊i has a probability of 0, remove that word from our input string. We will not consider the ones that our agent has never seen before. If all words are invalid, the model returns -1 (unknown). The motivation is that it simplifies the problem by ignoring words that the model hasn’t learned to associate with lies/truths. There are other ways of handling nknown words that may improve the model. These are mentioned in the **Future Feature Expansions** section.
 * If all 𝑊i are never trained on, then return an exception statement “Huh, I don’t know about that. Maybe try something more political?”
+Given 𝑊*, determine whether the statement is more likely to be a lie or the truth, that is: find 𝑃(L|𝑊*) and compare against threshold 0.5.
 * Calculate 𝑃(𝑊i|L) for all words within 𝑊*, 
 * Calculate 𝑃(L)
 * Calculate 𝑃(𝑊*|L)
@@ -75,6 +77,47 @@ For each word \( W<sub>i</sub> \) in the input query:
 P ( Query ) =  P( Query | Lie ) * P( Lie ) + P( Query | Not Lie ) * P( Not Lie )
 
 P(Lie|Query) = P( Query | Lie ) * P( Lie ) / P ( Query )
+
+## Exmaple:
+# Example Calculation
+
+From the code’s test case:  
+**Query:** `["absolutely", "my"]`  
+
+Assume training data has:  
+
+- Total lies (`numLie`) = 5,000  
+- Total truths (`numNotLie`) = 6,188  
+- **absolutely** appears in 3,000 lies and 1,000 truths  
+- **my** appears in 2,500 lies and 4,000 truths  
+
+## Step 1: Priors  
+
+P(Lie) = 5000 / 11188 = 0.447
+
+P(Not Lie) = 1 - 0.447 = 0.553
+
+## Step 2: Likelihoods  
+
+P( absolutely | Lie ) = 3000 / 5000 = 0.6
+
+P( absolutely | Not Lie) = 1000/6188 = 0.162
+
+P( my | Lie) = 2500 / 5000 = 0.5
+
+P( my | Not Lie) = 4000 / 6188 = 0.646
+
+
+## Step 3: Joint Probabilities  
+
+P(Query | Lie) = 0.6 * 0.5 = 0.3
+
+P(Query | Not Lie) = 0.162 * 0.646 = 0.105
+
+
+## Step 4: Posterior  
+
+P(Lie | Query) = 0.3 * 0.447 / (0.3* 0.447 + 0.105 * 0.553) = 0.698
 
 
 ## Future Feature Expansions
