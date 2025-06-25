@@ -1,7 +1,28 @@
 # Lie-Detector-Agent
-## Project Abstract Milestone1
+
+## About This Fork
+
+This project was completed as part of CSE 150A: Introduction to Artificial Intelligence at UC San Diego (Winter 2024). It was developed collaboratively with other students. This fork reflects my personal understanding and contribution to the project, including Naive Bayes implementation, probabilistic reasoning, and text classification using real-world data from the PolitiFact dataset.
+
+📁 Original repository: https://github.com/TomTang01/Lie-Detector-Agent
+
+## How to Run
+
+1. Clone the repository or download the files
+2. Ensure `politifact_clean_binarized.csv` is in the same directory as `LieDetector.ipynb`
+3. Open `LieDetector.ipynb` in Jupyter or Google Colab
+4. Run all cells, and use the input prompt to test your own sentences
+
+## Technologies Used
+
+- Python 3
+- pandas, numpy
+- Jupyter Notebook
+- Naive Bayes Classifier
+- Natural Language Processing (Bag-of-Words)
 
 ## Introduction
+
 This project aims to classify input statements as either truthful or deceptive based on the words presented. Using a dataset from Kaggle [Truth Detection/Deception Detection/Lie Detection.*Dataset* (2022, January 12). Kaggle.] (https://www.kaggle.com/datasets/thesergiu/truth-detectiondeception-detectionlie-detection) that contains labeled political statements (for now, we might change the data set as we later on), we develop a probabilistic agent to determine the likelihood of a statement being a lie. The agent calculates conditional probabilities for words given the truthfulness of statements and applies Bayes' Theorem to determine *P(L|W*)*, the probability of a statement being a lie given its words. Statements with all words unseen from training are flagged as unknown, and returned a failure statement requesting for another input.
 
 ---
@@ -169,9 +190,8 @@ Further improvements that can be made to increase the accuracy: One way of doing
 **To run the agent, download the LieDetector.ipynb file and the politifact_clean_binarized.csv file in the SAME directory. If you are using google collab, you will need to drag the csv file to the "file" location in google collab and overwrite the file location when reading it.**
 
 
-## Contributors
+## Other Contributors
 * Tom Tang
 * Guan Huang-Chen
 * Xueheng Zhou
-* Jefferson Umanzor-Urrutia
 * [TheSergiu (dataset owner)](https://www.kaggle.com/thesergiu)
