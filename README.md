@@ -1,7 +1,5 @@
 # Lie-Detector-Agent
 
-## About This Fork
-
 This project was completed as part of CSE 150A: Introduction to Artificial Intelligence at UC San Diego (Winter 2024). It was developed collaboratively with other students. This fork reflects my personal understanding and contribution to the project, including Naive Bayes implementation, probabilistic reasoning, and text classification using real-world data from the PolitiFact dataset.
 
 📁 Original repository: https://github.com/TomTang01/Lie-Detector-Agent
